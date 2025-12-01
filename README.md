@@ -361,48 +361,139 @@ journalctl -u nginx
 
 ---
 
-### **9️⃣ Create Custom Systemd Service**
+Here is a clear, step-by-step guide to **create a custom systemd service** on Linux (CentOS, RHEL, Rocky, Ubuntu — same steps).
 
-**Steps:**
+---
 
-1. Create service file:
+# ✅ **How to Create a Custom systemd Service**
 
-```bash
-sudo vi /etc/systemd/system/projectA.service
+### **Example Goal:**
+
+Create a service named **myapp.service** that runs a script located at:
+
+```
+/usr/local/bin/myapp.sh
+```
+
+---
+
+# **1️⃣ Create Your Script**
+
+Create the script you want systemd to run.
+
+```sh
+sudo nano /usr/local/bin/myapp.sh
+```
+
+Add:
+
+```sh
+#!/bin/bash
+echo "MyApp service is running..." >> /var/log/myapp.log
+```
+
+Save & exit.
+
+Make it executable:
+
+```sh
+sudo chmod +x /usr/local/bin/myapp.sh
+```
+
+---
+
+# **2️⃣ Create the Systemd Service File**
+
+Create the service file:
+
+```sh
+sudo vi /etc/systemd/system/myapp.service
 ```
 
 Paste:
 
 ```ini
 [Unit]
-Description=ProjectA App
+Description=My Custom Application Service
 After=network.target
 
 [Service]
-User=dev1
-ExecStart=/usr/bin/java -jar /opt/projectA/app.jar
+Type=simple
+ExecStart=/usr/local/bin/myapp.sh
 Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-2. Reload systemd & enable service:
+Save & exit.
 
-```bash
+---
+
+# **3️⃣ Reload Systemd Daemon**
+
+Whenever you add/edit a service:
+
+```sh
 sudo systemctl daemon-reload
-sudo systemctl enable --now projectA
-```
-
-3. Check status:
-
-```bash
-systemctl status projectA
 ```
 
 ---
 
-### **🔟 SSH Hardening**
+# **4️⃣ Enable the Service (start on boot)**
+
+```sh
+sudo systemctl enable myapp.service
+```
+
+---
+
+# **5️⃣ Start the Service**
+
+```sh
+sudo systemctl start myapp.service
+```
+
+---
+
+# **6️⃣ Check Status**
+
+```sh
+systemctl status myapp.service
+```
+
+---
+
+# **7️⃣ View Logs (journalctl)**
+
+```sh
+sudo journalctl -u myapp.service -f
+```
+
+---
+
+# **8️⃣ Stop / Restart the Service**
+
+Stop:
+
+```sh
+sudo systemctl stop myapp.service
+```
+
+Restart:
+
+```sh
+sudo systemctl restart myapp.service
+```
+
+---
+
+# ✔ Your custom systemd service is now created, enabled, and running!
+
+---
+
+
+### ** - SSH Hardening**
 
 **Steps:**
 
