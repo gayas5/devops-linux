@@ -382,7 +382,7 @@ Create a service named **myapp.service** that runs a script located at:
 Create the script you want systemd to run.
 
 ```sh
-sudo nano /usr/local/bin/myapp.sh
+sudo vi /usr/local/bin/myapp.sh
 ```
 
 Add:
