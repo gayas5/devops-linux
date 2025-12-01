@@ -1,4 +1,6 @@
+Absolutely! I can break down your **Level 1 → Level 3 assignments** into **step-by-step, easy-to-follow guidance**. I’ll keep it simple, actionable, and practical.
 
+---
 
 # 🚀 **DevOps Linux Assignments – Step by Step Guide**
 
@@ -17,9 +19,6 @@
 ```bash
 sudo groupadd devteam
 ```
-
-![alt text](<linux-projects/evidences/Screenshot 2025-12-01 153347.png>)
-
 2. Create users and assign to the group:
 
 ```bash
@@ -43,6 +42,10 @@ id dev1
 groups dev2
 ```
 
+![alt text](<evidences/Screenshot 2025-12-01 155832.png>)
+
+![alt text](<evidences/Screenshot 2025-12-01 160332.png>)
+
 ---
 
 ### **2️⃣ Set Permissions for Project Directory**
@@ -54,25 +57,27 @@ groups dev2
 ```bash
 sudo mkdir -p /opt/projectA
 ```
+![alt text](image.png)
 
 2. Assign ownership to dev1 and devteam:
 
 ```bash
 sudo chown -R dev1:devteam /opt/projectA
 ```
-
+![alt text](<evidences/Screenshot 2025-12-01 161113.png>)
 3. Set permissions (rwx for owner & group, none for others):
 
 ```bash
 sudo chmod -R 770 /opt/projectA
 ```
+![alt text](<evidences/Screenshot 2025-12-01 161343.png>)
 
 4. Verify:
 
 ```bash
 ls -ld /opt/projectA
 ```
-
+![alt text](<evidences/Screenshot 2025-12-01 161628.png>)
 ---
 
 ### **3️⃣ Install Required Packages**
@@ -88,7 +93,12 @@ sudo dnf update -y
 2. Install git, nginx, Java:
 
 ```bash
+
 sudo dnf install -y git nginx java-17-openjdk
+
+sudo dnf install -y java-17-amazon-corretto-devel
+
+
 ```
 
 3. Verify:
@@ -98,6 +108,8 @@ git --version
 nginx -v
 java --version
 ```
+
+![alt text](<evidences/Screenshot 2025-12-01 163023.png>)  
 
 ---
 
@@ -119,6 +131,18 @@ df -h
 # Network info
 ip a
 ```
+
+![alt text](<evidences/Screenshot 2025-12-01 163237.png>)  
+
+
+![alt text](<evidences/Screenshot 2025-12-01 163537.png>) 
+
+
+![alt text](<evidences/Screenshot 2025-12-01 163647.png>)  
+
+
+![alt text](<evidences/Screenshot 2025-12-01 163807.png>)  
+
 
 4. Save system report:
 
@@ -163,6 +187,11 @@ crontab -l
 ls /backup/
 ```
 
+![alt text](<evidences/Screenshot 2025-12-01 164424.png>)  
+
+
+![alt text](<evidences/Screenshot 2025-12-01 165013.png>) 
+
 ---
 
 ### **6️⃣ Create Shell Scripts**
@@ -172,8 +201,7 @@ ls /backup/
 ```bash
 sudo vi /usr/local/bin/cleanup_logs.sh
 ```
-
-Paste:
+paste :
 
 ```bash
 #!/bin/bash
@@ -185,6 +213,15 @@ Make executable:
 ```bash
 sudo chmod +x /usr/local/bin/cleanup_logs.sh
 ```
+
+![alt text](<evidences/Screenshot 2025-12-01 171006.png>) 
+
+
+![alt text](<evidences/Screenshot 2025-12-01 165636.png>)  
+
+
+![alt text](<evidences/Screenshot 2025-12-01 171300.png>) 
+
 
 **b) Service Restart Script**
 
@@ -209,7 +246,7 @@ sudo chmod +x /usr/local/bin/restart_nginx.sh
 **c) Health Check Script**
 
 ```bash
-sudo vi /usr/local/bin/check_nginx.sh
+sudo nano /usr/local/bin/check_nginx.sh
 ```
 
 Paste:
@@ -230,6 +267,21 @@ sudo chmod +x /usr/local/bin/check_nginx.sh
 
 ---
 
+
+![alt text](<evidences/Screenshot 2025-12-01 172653.png>) 
+
+
+![alt text](<evidences/Screenshot 2025-12-01 171300.png>) 
+
+
+![alt text](<evidences/Screenshot 2025-12-01 171659.png>)  
+
+
+![alt text](<evidences/Screenshot 2025-12-01 172546.png>) 
+
+
+![alt text](<evidences/Screenshot 2025-12-01 172834.png>)
+
 ### **7️⃣ Manage Logs**
 
 **Steps:**
@@ -243,7 +295,7 @@ sudo mkdir -p /var/log/projectA
 2. Script to log CPU & Memory usage every minute:
 
 ```bash
-sudo vi /usr/local/bin/log_usage.sh
+sudo nano /usr/local/bin/log_usage.sh
 ```
 
 Paste:
@@ -264,6 +316,16 @@ sudo chmod +x /usr/local/bin/log_usage.sh
 ```bash
 * * * * * /usr/local/bin/log_usage.sh
 ```
+
+![alt text](<evidences/Screenshot 2025-12-01 173920.png>)  
+
+
+![alt text](<evidences/Screenshot 2025-12-01 173246.png>) 
+
+
+![alt text](<evidences/Screenshot 2025-12-01 173624.png>) 
+
+
 
 ---
 
@@ -287,6 +349,11 @@ systemctl status nginx
 # View logs
 journalctl -u nginx
 ```
+
+![alt text](<evidences/Screenshot 2025-12-01 174608.png>) 
+
+
+![alt text](<evidences/Screenshot 2025-12-01 174912.png>) 
 
 ---
 
@@ -464,6 +531,5 @@ This **step-by-step guide** lets you **perform every assignment successfully**, 
 
 ---
 
-.
+If you want, I can make a **single PDF-style checklist with all commands** so you can **execute it directly on a server witking up commands**.
 
-Do you want me to this
