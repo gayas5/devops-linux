@@ -532,46 +532,85 @@ ssh -p 2222 dev1@server-ip
 
 ### **1️⃣1️⃣ LVM Setup**
 
-**Steps:**
+Sure! I can guide you step by step on setting up **LVM (Logical Volume Management)** on Linux. I’ll provide clear commands and explanations. I assume you are using **Red Hat/CentOS/Ubuntu** type Linux.
 
-1. Initialize new disk:
+---
 
-```bash
-sudo pvcreate /dev/xvdb
-```
+## **Step 1: Check Existing Disks**
 
-2. Create volume group:
-
-```bash
-sudo vgcreate app_vg /dev/xvdb
-```
-
-3. Create logical volume:
-
-```bash
-sudo lvcreate -L 5G -n data_lv app_vg
-```
-
-4. Format & mount:
-
-```bash
-sudo mkfs.ext4 /dev/app_vg/data_lv
-sudo mkdir -p /mnt/data
-sudo mount /dev/app_vg/data_lv /mnt/data
-```
-
-5. Add to `/etc/fstab` for auto-mount:
-
-```bash
-/dev/app_vg/data_lv /mnt/data ext4 defaults 0 0
-```
-
-6. Verify:
+First, check the disks available on your system.
 
 ```bash
 lsblk
-df -h
 ```
+
+or
+
+```bash
+fdisk -l
+```
+
+Identify the disks you want to use for LVM (e.g., `/dev/sdb`, `/dev/sdc`).
+
+---
+
+## **Step 2: Install LVM Tools (if not installed)**
+
+```bash
+# CentOS/RHEL
+sudo yum install lvm2 -y
+
+# Ubuntu/Debian
+sudo apt install lvm2 -y
+```
+
+---
+the `lsblk` output, I see:
+
+* You currently have **only one disk**: `nvme0n1` (the root disk) with partitions.
+* There are **no extra disks** for LVM yet.
+
+💡 **Important:** LVM requires **unused disks or partitions**. You **cannot use the root disk** (`nvme0n1`) safely for LVM unless you are willing to destroy data.
+
+---
+
+## **Step 1: Attach a New Disk**
+
+Since you are on AWS EC2 (I assume from `nvme0n1`), do this:
+
+1. Go to the **EC2 Console → Volumes → Create Volume**
+
+   * Choose the size (e.g., 10 GB)
+   * Use the **same Availability Zone** as your instance
+2. Attach it to your instance
+- Verify in Linux:
+
+lsblk
+
+
+You should see something like:
+
+nvme0n1   8G  disk
+nvme1n1  10G  disk   <-- New disk
+
+
+## Then proceed with LVM commands:
+
+sudo pvcreate /dev/nvme1n1
+sudo vgcreate my_vg /dev/nvme1n1
+sudo lvcreate -L 10G -n my_lv my_vg
+sudo mkfs.ext4 /dev/my_vg/my_lv
+sudo mkdir /mnt/mydata
+sudo mount /dev/my_vg/my_lv /mnt/mydata
+
+---
+![alt text](<evidences/Screenshot 2025-12-01 204610.png>)
+![alt text](<evidences/Screenshot 2025-12-01 204635.png>)
+![alt text](<evidences/Screenshot 2025-12-01 204701.png>)
+---
+
+✅ Now your LVM setup is ready, flexible, and can be expanded dynamically.
+
 
 ---
 
@@ -646,6 +685,7 @@ sudo logrotate -d /etc/logrotate.d/projectA
 
 ![alt text](<evidences/Screenshot 2025-12-01 202832.png>)
 ![alt text](<evidences/Screenshot 2025-12-01 203200.png>)
+
 ---
 
 This **step-by-step guide** lets you **perform every assignment successfully**, even if you’re new to Linux.
