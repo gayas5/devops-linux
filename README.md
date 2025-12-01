@@ -485,7 +485,11 @@ Restart:
 ```sh
 sudo systemctl restart myapp.service
 ```
+![alt text](<evidences/Screenshot 2025-12-01 195438.png>)
 
+![alt text](<evidences/Screenshot 2025-12-01 195904.png>)
+
+![alt text](<evidences/Screenshot 2025-12-01 201050.png>)
 ---
 
 # ✔ Your custom systemd service is now created, enabled, and running!
@@ -517,7 +521,7 @@ Port 2222
 ```bash
 sudo systemctl restart sshd
 ```
-
+![alt text](<evidences/Screenshot 2025-12-01 201125.png>)
 4. Test login:
 
 ```bash
@@ -572,7 +576,29 @@ df -h
 ---
 
 ### **1️⃣2️⃣ Firewall Configuration**
+Step 1: Install firewalld
+sudo yum install -y firewalld
 
+
+On Amazon Linux 2, you may need:
+
+sudo amazon-linux-extras install epel -y
+sudo yum install -y firewalld
+
+Step 2: Start and enable firewalld
+sudo systemctl start firewalld
+sudo systemctl enable firewalld
+
+Step 3: Open ports
+
+After installing and starting firewalld, you can run your commands:
+
+sudo firewall-cmd --add-service=http --permanent
+sudo firewall-cmd --add-port=8080/tcp --permanent
+sudo firewall-cmd --reload
+
+Step 4: Verify
+sudo firewall-cmd --list-all
 **Steps:**
 
 ```bash
