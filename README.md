@@ -620,7 +620,7 @@ sudo firewall-cmd --list-all
 1. Create logrotate config:
 
 ```bash
-sudo nano /etc/logrotate.d/projectA
+sudo vi /etc/logrotate.d/projectA
 ```
 
 Paste:
@@ -644,6 +644,8 @@ Paste:
 sudo logrotate -d /etc/logrotate.d/projectA
 ```
 
+![alt text](<evidences/Screenshot 2025-12-01 202832.png>)
+![alt text](<evidences/Screenshot 2025-12-01 203200.png>)
 ---
 
 This **step-by-step guide** lets you **perform every assignment successfully**, even if you’re new to Linux.
