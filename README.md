@@ -168,7 +168,7 @@ ls /backup/
 **a) Log Cleanup Script**
 
 ```bash
-sudo nano /usr/local/bin/cleanup_logs.sh
+sudo vi /usr/local/bin/cleanup_logs.sh
 ```
 
 Paste:
@@ -187,7 +187,7 @@ sudo chmod +x /usr/local/bin/cleanup_logs.sh
 **b) Service Restart Script**
 
 ```bash
-sudo nano /usr/local/bin/restart_nginx.sh
+sudo vi /usr/local/bin/restart_nginx.sh
 ```
 
 Paste:
@@ -207,7 +207,7 @@ sudo chmod +x /usr/local/bin/restart_nginx.sh
 **c) Health Check Script**
 
 ```bash
-sudo nano /usr/local/bin/check_nginx.sh
+sudo vi /usr/local/bin/check_nginx.sh
 ```
 
 Paste:
@@ -241,7 +241,7 @@ sudo mkdir -p /var/log/projectA
 2. Script to log CPU & Memory usage every minute:
 
 ```bash
-sudo nano /usr/local/bin/log_usage.sh
+sudo vi /usr/local/bin/log_usage.sh
 ```
 
 Paste:
@@ -299,7 +299,7 @@ journalctl -u nginx
 1. Create service file:
 
 ```bash
-sudo nano /etc/systemd/system/projectA.service
+sudo vi /etc/systemd/system/projectA.service
 ```
 
 Paste:
@@ -340,7 +340,7 @@ systemctl status projectA
 1. Edit SSH config:
 
 ```bash
-sudo nano /etc/ssh/sshd_config
+sudo vi /etc/ssh/sshd_config
 ```
 
 2. Change:
