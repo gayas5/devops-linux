@@ -608,7 +608,9 @@ sudo firewall-cmd --permanent --add-port=2222/tcp
 sudo firewall-cmd --reload
 sudo firewall-cmd --list-all
 ```
+![alt text](<evidences/Screenshot 2025-12-01 202228.png>)
 
+![alt text](<evidences/Screenshot 2025-12-01 202421.png>)
 ---
 
 ### **1️⃣3️⃣ Logrotate for App Logs**
