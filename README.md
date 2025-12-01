@@ -18,6 +18,8 @@
 sudo groupadd devteam
 ```
 
+![alt text](<linux-projects/evidences/Screenshot 2025-12-01 153347.png>)
+
 2. Create users and assign to the group:
 
 ```bash
